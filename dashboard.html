@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ECO Meter - Dashboard</title>
+  <link rel="stylesheet" href="client/styles.css" />
+</head>
+<body class="dashboard-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">🌿 ECO meter</div>
+    <ul class="nav-links">
+      <li><a href="#">Contact</a></li>
+      <li class="dropdown">
+        <a href="#">Team Members</a>
+        <ul class="dropdown-content">
+          <li>Umar</li>
+          <li>Purva</li>
+          <li>Sakshi</li>
+          <li>Shane Gilbert</li>
+        </ul>
+      </li>
+      <li><a href="#" class="signup-btn">Sign Up</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="calculator">
+
+    <!-- Grid for cards (Electricity & Vehicle) -->
+    <div class="card-grid">
+      <!-- Electricity Section -->
+      <section class="card-section">
+        <h2>⚡ Electricity Consumption</h2>
+        <form id="electricity-form">
+          <div id="appliance-container">
+            <!-- Appliance Inputs (Dynamic) -->
+            <div class="appliance-input">
+              <label>
+                Appliance (Voltage in Watts):
+                <input type="number" class="voltage" placeholder="e.g. 60" required />
+              </label>
+              <label>
+                Time Used (in Hours):
+                <input type="number" class="hours" placeholder="e.g. 5" required />
+              </label>
+            </div>
+          </div>
+          <!-- Add Appliance Button -->
+<button type="button" id="add-appliance" class="add-btn">
+    <span class="icon">+</span> Add Appliance
+  </button>
+  
+        </form>
+      </section>
+
+      <!-- Transport Section -->
+      <section class="card-section">
+        <h2>🚗 Travel Emissions</h2>
+        <form id="transport-form">
+          <div id="vehicle-container">
+            <!-- Vehicle Inputs (Dynamic) -->
+            <div class="vehicle-input">
+              <label>
+                Mode of Transport:
+                <select class="vehicle-type" required>
+                  <option value="Petrol">Petrol</option>
+                  <option value="Diesel">Diesel</option>
+                  <option value="CNG">CNG</option>
+                  <option value="Electric">Electric</option>
+                </select>
+              </label>
+              <label>
+                Travel Duration (in Minutes):
+                <input type="number" class="travel-time" placeholder="e.g. 30" required />
+              </label>
+            </div>
+          </div>
+          <!-- Add Appliance Button -->
+<button type="button" id="add-appliance" class="add-btn">
+    <span class="icon">+</span> Add Vehicle
+  </button>
+  
+        </form>
+      </section>
+    </div>
+
+    <!-- Second Section: Calculate, Result, and Tips -->
+    <div class="right-section">
+      <!-- Calculate Button -->
+      <div style="text-align: center; margin-top: 1rem;">
+        <button id="calcBtn" class="signup-btn">Calculate Emission</button>
+      </div>
+
+      <!-- Result Section -->
+      <div class="result-box">
+        <div id="result"></div>
+      </div>
+
+      <!-- Tips Box -->
+      <section class="tips-box">
+        <h3>🌱 Eco Tip</h3>
+        <p>One mature tree absorbs around <strong>21 kg</strong> of CO₂/year. Consider planting trees to offset your carbon footprint!</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><strong>"Track your impact, grow a greener future."</strong></p>
+    <p>© 2025 ECO meter. All rights reserved.</p>
+  </footer>
+
+  <script src="client/script.js"></script>
+</body>
+</html>
