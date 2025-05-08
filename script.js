@@ -105,3 +105,17 @@ if (calcBtn) {
     resultBox.innerHTML = `<h3>Total Estimated CO₂ Emission: ${totalEmission.toFixed(2)} kg</h3>`;
   });
 }
+// ====== RANDOM FOOTER QUOTE (Dashboard Page Only) ======
+document.addEventListener("DOMContentLoaded", () => {
+  const footerQuote = document.getElementById("footer-quote");
+  if (footerQuote) {
+    const quotes = [
+      "Track your impact, grow a greener future.",
+      "Track It. Cut It .Live Clean.",
+      "Ecometer : Your Eco-Conscience in code."
+    ];
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    footerQuote.innerHTML = `<strong>"${quotes[randomIndex]}"</strong>`;
+  }
+});
+
