@@ -56,3 +56,52 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 });
+// new
+const calcBtn = document.getElementById("calcBtn");
+if (calcBtn) {
+  calcBtn.addEventListener("click", () => {
+    let totalEmission = 0;
+
+    // Electricity Emissions
+    const voltages = document.querySelectorAll(".voltage");
+    const hours = document.querySelectorAll(".hours");
+    for (let i = 0; i < voltages.length; i++) {
+      const watt = parseFloat(voltages[i].value);
+      const hour = parseFloat(hours[i].value);
+      if (!isNaN(watt) && !isNaN(hour)) {
+        const kWh = (watt * hour) / 1000;
+        totalEmission += kWh * 0.92;
+      }
+    }
+
+    // Transport Emissions
+    const travelTimes = document.querySelectorAll(".travel-time");
+    const vehicleTypes = document.querySelectorAll(".vehicle-type");
+    for (let i = 0; i < travelTimes.length; i++) {
+      const minutes = parseFloat(travelTimes[i].value);
+      const type = vehicleTypes[i].value;
+      if (!isNaN(minutes)) {
+        let factor = 0;
+        switch (type) {
+          case "Petrol":
+            factor = 0.19;
+            break;
+          case "Diesel":
+            factor = 0.21;
+            break;
+          case "CNG":
+            factor = 0.14;
+            break;
+          case "Electric":
+            factor = 0.05;
+            break;
+        }
+        totalEmission += minutes * factor;
+      }
+    }
+
+    // Display result
+    const resultBox = document.getElementById("result");
+    resultBox.innerHTML = `<h3>Total Estimated CO₂ Emission: ${totalEmission.toFixed(2)} kg</h3>`;
+  });
+}
