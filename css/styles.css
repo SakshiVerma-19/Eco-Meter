@@ -193,6 +193,18 @@
     border-color: var(--main-color);
     outline: none;
   }
+  #result {
+    background-color: #e6f4ea; /* Light green for eco-friendly feel */
+    border: 2px solid #4caf50;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    color: #2e7d32;
+    font-size: 1.2rem;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
   
   /* ========== TIPS BOX ========== */
   .tips-box {
