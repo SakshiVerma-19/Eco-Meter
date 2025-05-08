@@ -9,38 +9,40 @@
 <body class="login-page">
     <nav class="navbar">
         <div class="logo">🌿 ECO meter</div>
+        <ul class="nav-links">
           <li><button id="openModalNav" class="signup-btn">Sign Up</button></li>
         </ul>
-      </nav>
+    </nav>
 
   <main class="login-container">
     <div class="login-card">
       <h1>Welcome to ECO meter</h1>
-      <p>Track your carbon footprint and contribute to a greener planet </p>
-      <form action="dashboard.html" method="POST">
+      <p>Track your carbon footprint and contribute to a greener planet</p>
+      <form id="login-form">
         <input type="email" placeholder="Email" required />
         <input type="password" placeholder="Password" required />
+        <p id="login-error" style="color: #e53935; display: none; margin-top: 0;"></p>
         <button type="submit">Log In</button>
       </form>
-      <p>Don’t have an account? <button id="openModalCard" class="signupModalcard">Sign Up</button></p>
+      <p>Don't have an account? <button id="openModalCard" class="signupModalcard">Sign Up</button></p>
     </div>
   </main>
 
-
-<!-- Modal Structure -->
-<div id="signupModal" class="modal">
+  <!-- Modal Structure -->
+  <div id="signupModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>Create Account</h2>
-      <form action="dashboard.html">
+      <form id="signup-form">
         <input type="text" placeholder="Name" required>
         <input type="email" placeholder="Email" required>
         <input type="password" placeholder="Password" required>
+        <p id="signup-error" style="color: #e53935; display: none; margin-top: 0;"></p>
         <button type="submit">Sign Up</button>
       </form>
     </div>
   </div>
 
-  <script src="./script.js"></script>
+  <script type="module" src="./index.js"></script>
 </body>
 </html>

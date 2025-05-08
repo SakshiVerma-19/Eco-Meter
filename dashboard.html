@@ -22,7 +22,8 @@
           <li>Shane Gilbert</li>
         </ul>
       </li>
-      <li><a href="#" class="signup-btn">Sign Up</a></li>
+      <li><span id="user-display" style="color: white; margin-right: 10px;"></span></li>
+      <li><button id="logout-btn" class="signup-btn">Log Out</button></li>
     </ul>
   </nav>
 
@@ -49,10 +50,9 @@
             </div>
           </div>
           <!-- Add Appliance Button -->
-<button type="button" id="add-appliance" class="add-btn">
-    <span class="icon">+</span> Add Appliance
-  </button>
-  
+          <button type="button" id="add-appliance" class="add-btn">
+            <span class="icon">+</span> Add Appliance
+          </button>
         </form>
       </section>
 
@@ -78,11 +78,10 @@
               </label>
             </div>
           </div>
-          <!-- Add Appliance Button -->
-<button type="button" id="add-vehicle" class="add-btn">
-    <span class="icon">+</span> Add Vehicle
-  </button>
-  
+          <!-- Add Vehicle Button -->
+          <button type="button" id="add-vehicle" class="add-btn">
+            <span class="icon">+</span> Add Vehicle
+          </button>
         </form>
       </section>
     </div>
@@ -107,13 +106,12 @@
     </div>
   </main>
 
-  
- <!-- FOOTER -->
-<footer class="footer">
-  <p id="footer-quote"><strong>"Track your impact, grow a greener future."</strong></p>
-  <p>© 2025 ECO meter. All rights reserved.</p>
-</footer>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><strong>"Track your impact, grow a greener future."</strong></p>
+    <p>© 2025 ECO meter. All rights reserved.</p>
+  </footer>
 
-  <script src="./script.js"></script>
+  <script type="module" src="./dashboard.js"></script>
 </body>
 </html>
