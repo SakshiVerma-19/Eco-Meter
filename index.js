@@ -1,6 +1,10 @@
-import { signIn, signUp, checkAuthState } from "./auth.js"
+import { signIn, signUp, signInWithGoogle, checkAuthState } from "./auth.js"
+import { initializeDatabase } from "./database.js"
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize database
+  initializeDatabase().catch(console.error)
+
   // Check if user is already logged in
   checkAuthState((user) => {
     if (user) {
@@ -72,6 +76,47 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
+  // Google sign-in buttons
+  const googleLoginBtn = document.getElementById("google-login-btn")
+  if (googleLoginBtn) {
+    googleLoginBtn.addEventListener("click", async () => {
+      try {
+        const user = await signInWithGoogle()
+        console.log("Google login successful, user:", user)
+        window.location.href = "dashboard.html"
+      } catch (error) {
+        console.error("Google login error:", error)
+        const errorMsg = document.getElementById("login-error")
+        if (errorMsg) {
+          errorMsg.textContent = getErrorMessage(error)
+          errorMsg.style.display = "block"
+        } else {
+          alert(`Google login failed: ${getErrorMessage(error)}`)
+        }
+      }
+    })
+  }
+
+  const googleSignupBtn = document.getElementById("google-signup-btn")
+  if (googleSignupBtn) {
+    googleSignupBtn.addEventListener("click", async () => {
+      try {
+        const user = await signInWithGoogle()
+        console.log("Google signup successful, user:", user)
+        window.location.href = "dashboard.html"
+      } catch (error) {
+        console.error("Google signup error:", error)
+        const errorMsg = document.getElementById("signup-error")
+        if (errorMsg) {
+          errorMsg.textContent = getErrorMessage(error)
+          errorMsg.style.display = "block"
+        } else {
+          alert(`Google signup failed: ${getErrorMessage(error)}`)
+        }
+      }
+    })
+  }
+
   // Signup modal form
   const signupForm = document.getElementById("signup-form")
   if (signupForm) {
@@ -114,6 +159,12 @@ function getErrorMessage(error) {
     case "auth/user-not-found":
     case "auth/wrong-password":
       return "Invalid email or password."
+    case "auth/popup-closed-by-user":
+      return "Sign-in popup was closed before completing the sign in."
+    case "auth/cancelled-popup-request":
+      return "The sign-in popup was cancelled."
+    case "auth/popup-blocked":
+      return "The sign-in popup was blocked by the browser."
     default:
       return error.message
   }

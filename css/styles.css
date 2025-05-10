@@ -9,6 +9,7 @@
   --transition-speed: 0.3s;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   --error-color: #e53935; /* Error color for form validation */
+  --google-blue: #4285f4;
 }
 
 /* ========== GLOBAL STYLES ========== */
@@ -142,6 +143,44 @@ header {
   text-decoration: underline;
 }
 
+/* ========== SOCIAL LOGIN ========== */
+.social-login {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.social-login p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #444;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.google-btn:hover {
+  background-color: #f8f8f8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.google-btn img {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+}
+
 /* ========== DASHBOARD ========== */
 .dashboard-page {
   min-height: 100vh;
@@ -199,6 +238,7 @@ header {
   border-color: var(--main-color);
   outline: none;
 }
+
 #result {
   background-color: #e6f4ea; /* Light green for eco-friendly feel */
   border: 2px solid #4caf50;
@@ -209,6 +249,28 @@ header {
   font-size: 1.2rem;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#result .error {
+  color: var(--error-color);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--main-color);
+  animation: spin 1s ease-in-out infinite;
+  margin: 0 auto 10px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ========== TIPS BOX ========== */

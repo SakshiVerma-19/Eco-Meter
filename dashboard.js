@@ -1,4 +1,5 @@
 import { checkAuthState, logOut } from "./auth.js"
+import { getTravelEmissionFactors, getElectricityEmissionFactor } from "./database.js"
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Dashboard page loaded")
@@ -11,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       console.log("User is signed in:", user)
       // User is signed in, update UI
-      const userName = localStorage.getItem("userName") || user.email.split("@")[0]
+      const userName = localStorage.getItem("userName") || user.displayName || user.email.split("@")[0]
       updateUserUI(userName)
     }
   })
@@ -93,50 +94,51 @@ function setupDashboardFunctionality() {
   // Calculate button
   const calcBtn = document.getElementById("calcBtn")
   if (calcBtn) {
-    calcBtn.addEventListener("click", () => {
-      let totalEmission = 0
-
-      // Electricity Emissions
-      const voltages = document.querySelectorAll(".voltage")
-      const hours = document.querySelectorAll(".hours")
-      for (let i = 0; i < voltages.length; i++) {
-        const watt = Number.parseFloat(voltages[i].value)
-        const hour = Number.parseFloat(hours[i].value)
-        if (!isNaN(watt) && !isNaN(hour)) {
-          const kWh = (watt * hour) / 1000
-          totalEmission += kWh * 0.92
-        }
-      }
-
-      // Transport Emissions
-      const travelTimes = document.querySelectorAll(".travel-time")
-      const vehicleTypes = document.querySelectorAll(".vehicle-type")
-      for (let i = 0; i < travelTimes.length; i++) {
-        const minutes = Number.parseFloat(travelTimes[i].value)
-        const type = vehicleTypes[i].value
-        if (!isNaN(minutes)) {
-          let factor = 0
-          switch (type) {
-            case "Petrol":
-              factor = 0.19
-              break
-            case "Diesel":
-              factor = 0.21
-              break
-            case "CNG":
-              factor = 0.14
-              break
-            case "Electric":
-              factor = 0.05
-              break
-          }
-          totalEmission += minutes * factor
-        }
-      }
-
-      // Display result
+    calcBtn.addEventListener("click", async () => {
+      // Show loading indicator
       const resultBox = document.getElementById("result")
-      resultBox.innerHTML = `<h3>Total Estimated CO₂ Emission: ${totalEmission.toFixed(2)} kg</h3>`
+      resultBox.innerHTML = `<div class="loading-spinner"></div><p>Calculating...</p>`
+
+      try {
+        // Fetch emission factors from database
+        const travelFactors = await getTravelEmissionFactors()
+        const electricityFactor = await getElectricityEmissionFactor()
+
+        console.log("Emission factors loaded:", { travelFactors, electricityFactor })
+
+        let totalEmission = 0
+
+        // Electricity Emissions
+        const voltages = document.querySelectorAll(".voltage")
+        const hours = document.querySelectorAll(".hours")
+        for (let i = 0; i < voltages.length; i++) {
+          const watt = Number.parseFloat(voltages[i].value)
+          const hour = Number.parseFloat(hours[i].value)
+          if (!isNaN(watt) && !isNaN(hour)) {
+            const kWh = (watt * hour) / 1000
+            totalEmission += kWh * electricityFactor
+          }
+        }
+
+        // Transport Emissions
+        const travelTimes = document.querySelectorAll(".travel-time")
+        const vehicleTypes = document.querySelectorAll(".vehicle-type")
+        for (let i = 0; i < travelTimes.length; i++) {
+          const minutes = Number.parseFloat(travelTimes[i].value)
+          const type = vehicleTypes[i].value
+          if (!isNaN(minutes)) {
+            // Use emission factor from database
+            const factor = travelFactors[type] || 0
+            totalEmission += minutes * factor
+          }
+        }
+
+        // Display result
+        resultBox.innerHTML = `<h3>Total Estimated CO₂ Emission: ${totalEmission.toFixed(2)} kg</h3>`
+      } catch (error) {
+        console.error("Calculation error:", error)
+        resultBox.innerHTML = `<h3 class="error">Error calculating emissions. Please try again.</h3>`
+      }
     })
   }
 }

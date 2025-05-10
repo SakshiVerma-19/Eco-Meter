@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ECO Meter - Login</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <!-- Add Google Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="login-page">
     <nav class="navbar">
@@ -24,6 +26,13 @@
         <p id="login-error" style="color: #e53935; display: none; margin-top: 0;"></p>
         <button type="submit">Log In</button>
       </form>
+      <div class="social-login">
+        <p>Or sign in with:</p>
+        <button type="button" id="google-login-btn" class="google-btn">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" />
+          Sign in with Google
+        </button>
+      </div>
       <p>Don't have an account? <button id="openModalCard" class="signupModalcard">Sign Up</button></p>
     </div>
   </main>
@@ -40,6 +49,13 @@
         <p id="signup-error" style="color: #e53935; display: none; margin-top: 0;"></p>
         <button type="submit">Sign Up</button>
       </form>
+      <div class="social-login">
+        <p>Or sign up with:</p>
+        <button type="button" id="google-signup-btn" class="google-btn">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" />
+          Sign up with Google
+        </button>
+      </div>
     </div>
   </div>
 
