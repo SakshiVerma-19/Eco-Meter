@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+import { db, doc, getDoc, setDoc, collection } from "./firebase.js"
+import { auth } from "./firebase.js"
+=======
 import { db, doc, getDoc, setDoc } from "./firebase.js"
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
 
 // Initialize the database with default emission factors if they don't exist
 export const initializeDatabase = async () => {
@@ -7,6 +12,35 @@ export const initializeDatabase = async () => {
     const travelFactorsRef = doc(db, "emissionFactors", "travel")
     const travelFactorsSnap = await getDoc(travelFactorsRef)
 
+<<<<<<< HEAD
+    const defaultTravelFactors = {
+      Petrol: 0.19, // kg CO2 per minute
+      Diesel: 0.21,
+      CNG: 0.14,
+      Electric: 0.05,
+    }
+
+    if (!travelFactorsSnap.exists()) {
+      // Create default travel emission factors
+      await setDoc(travelFactorsRef, defaultTravelFactors)
+      console.log("Default travel emission factors created")
+    } else {
+      // Check if all required factors exist, update if needed
+      const existingData = travelFactorsSnap.data()
+      let needsUpdate = false
+
+      for (const key in defaultTravelFactors) {
+        if (existingData[key] === undefined) {
+          existingData[key] = defaultTravelFactors[key]
+          needsUpdate = true
+        }
+      }
+
+      if (needsUpdate) {
+        await setDoc(travelFactorsRef, existingData)
+        console.log("Updated missing travel emission factors")
+      }
+=======
     if (!travelFactorsSnap.exists()) {
       // Create default travel emission factors
       await setDoc(travelFactorsRef, {
@@ -16,6 +50,7 @@ export const initializeDatabase = async () => {
         Electric: 0.05,
       })
       console.log("Default travel emission factors created")
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
     }
 
     // Check if electricity emission factors exist
@@ -29,8 +64,16 @@ export const initializeDatabase = async () => {
       })
       console.log("Default electricity emission factors created")
     }
+<<<<<<< HEAD
+
+    return true
   } catch (error) {
     console.error("Error initializing database:", error)
+    return false
+=======
+  } catch (error) {
+    console.error("Error initializing database:", error)
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
   }
 }
 
@@ -81,6 +124,30 @@ export const getElectricityEmissionFactor = async () => {
   }
 }
 
+<<<<<<< HEAD
+// Log emission calculation for debugging
+export const logEmissionCalculation = async (calculationData) => {
+  try {
+    // Get current user
+    const user = auth.currentUser
+    if (!user) return false
+
+    // Create a new calculation record
+    const calculationRef = doc(collection(db, "users", user.uid, "calculations"))
+    await setDoc(calculationRef, {
+      ...calculationData,
+      timestamp: new Date().toISOString(),
+    })
+
+    return true
+  } catch (error) {
+    console.error("Error logging calculation:", error)
+    return false
+  }
+}
+
+=======
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
 // Save user data
 export const saveUserData = async (userId, userData) => {
   try {

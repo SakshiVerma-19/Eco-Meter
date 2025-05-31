@@ -24,10 +24,18 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color var(--transition-speed);
+<<<<<<< HEAD
+  background-image: url("../bg3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+=======
   background-image: url(../bg3.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
   min-height: 100vh;
 }
 
@@ -184,7 +192,11 @@ header {
 /* ========== DASHBOARD ========== */
 .dashboard-page {
   min-height: 100vh;
+<<<<<<< HEAD
+  background-color: rgba(4, 48, 4, 0.85);
+=======
   background-color: var(--bg-color);
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
 }
 
 .calculator {
@@ -204,7 +216,11 @@ header {
   border-radius: var(--card-radius);
   box-shadow: var(--shadow);
   width: 100%;
+<<<<<<< HEAD
+  max-width: 500px;
+=======
   max-width: 400px;
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
   animation: fadeInUp 0.6s ease;
 }
 
@@ -223,6 +239,10 @@ header {
   display: flex;
   flex-direction: column;
   font-size: 0.95rem;
+<<<<<<< HEAD
+  margin-bottom: 0.3rem;
+=======
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
 }
 
 .card-section input,
@@ -231,6 +251,10 @@ header {
   border: 1px solid #bbb;
   border-radius: 8px;
   transition: border-color var(--transition-speed);
+<<<<<<< HEAD
+  margin-top: 0.25rem;
+=======
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
 }
 
 .card-section input:focus,
@@ -239,6 +263,31 @@ header {
   outline: none;
 }
 
+<<<<<<< HEAD
+/* Appliance input styling */
+.appliance-input,
+.vehicle-input {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.appliance-input label,
+.vehicle-input label {
+  margin-bottom: 0.5rem;
+}
+
+/* Quantity input specific styling */
+.quantity,
+.trip-count {
+  max-width: 100px;
+}
+
+=======
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
 #result {
   background-color: #e6f4ea; /* Light green for eco-friendly feel */
   border: 2px solid #4caf50;
@@ -249,6 +298,21 @@ header {
   font-size: 1.2rem;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+<<<<<<< HEAD
+  width: 100%;
+  max-width: 500px;
+}
+
+#result h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+#result p {
+  font-size: 0.95rem;
+  margin: 0.25rem 0;
+=======
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
 }
 
 #result .error {
@@ -276,9 +340,16 @@ header {
 /* ========== TIPS BOX ========== */
 .tips-box {
   background-color: var(--bg-color-2);
+<<<<<<< HEAD
+  padding: 1.5rem;
+  border-radius: var(--card-radius);
+  max-width: 500px;
+  width: 100%;
+=======
   padding: 1.5rem 2.5rem 1.5rem 2.5rem;
   border-radius: var(--card-radius);
   max-width: 70vw;
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
   box-shadow: var(--shadow);
   color: var(--main-color);
   animation: fadeIn 1s ease;
@@ -315,10 +386,24 @@ header {
     flex-direction: column;
     align-items: center;
   }
+<<<<<<< HEAD
+
+  .card-section,
+  #result,
+  .tips-box {
+    width: 90%;
+  }
+}
+
+/* NAVBAR STYLES */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.8);
+=======
 }
 /* NAVBAR STYLES */
 .navbar {
   background-color: black;
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -410,6 +495,12 @@ header {
   font-size: 1.2rem;
   color: var(--text-color);
   min-height: 2rem;
+<<<<<<< HEAD
+  width: 100%;
+  display: flex;
+  justify-content: center;
+=======
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
 }
 
 /* Sticky footer fix */
@@ -429,7 +520,11 @@ main {
 .footer {
   width: 100%;
   margin-top: auto;
+<<<<<<< HEAD
+  background-color: rgba(8, 8, 8, 0.9);
+=======
   background-color: rgba(8, 8, 8, 0.756);
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
   color: white;
   text-align: center;
   padding: 1rem 0;
@@ -442,14 +537,24 @@ main {
   color: var(--bg-color);
   font-size: 16px;
   font-weight: bold;
+<<<<<<< HEAD
+  padding: 8px 16px;
+=======
   padding: 8px 10px;
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
   border: none;
   border-radius: 8px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   transition: background-color var(--transition-speed);
+<<<<<<< HEAD
+  margin-top: 20px;
+  margin-bottom: 10px;
+  align-self: center;
+=======
   margin-top: 1rem;
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
 }
 
 .add-btn:hover {
@@ -461,10 +566,33 @@ main {
   margin-right: 8px;
 }
 
+<<<<<<< HEAD
+/* Remove button for appliances and vehicles */
+.remove-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.remove-btn:hover {
+  background-color: #d32f2f;
+=======
 /* Optional: Button in the context of dynamic forms */
 .add-btn {
   margin-top: 20px;
   margin-bottom: 20px;
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
 }
 
 /* Modal Background */
@@ -546,3 +674,56 @@ main {
     transform: translateY(0);
   }
 }
+<<<<<<< HEAD
+
+/* Emission factors display */
+.emission-factors {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed #154817;
+  font-size: 0.85rem;
+}
+
+.emission-factors h4 {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.emission-factors p {
+  margin: 0.1rem 0;
+  font-size: 0.8rem;
+}
+
+/* Position elements relative to allow for remove button */
+.appliance-input,
+.vehicle-input {
+  position: relative;
+}
+
+/* Add colored headers for each section */
+.section-header {
+  background-color: var(--main-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header .item-number {
+  background-color: white;
+  color: var(--main-color);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+=======
+>>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
