@@ -1,9 +1,5 @@
 import { checkAuthState, logOut } from "./auth.js"
-<<<<<<< HEAD
 import { getTravelEmissionFactors, getElectricityEmissionFactor, logEmissionCalculation } from "./database.js"
-=======
-import { getTravelEmissionFactors, getElectricityEmissionFactor } from "./database.js"
->>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Dashboard page loaded")
@@ -47,7 +43,6 @@ function updateUserUI(userName) {
   }
 }
 
-<<<<<<< HEAD
 // Function to update appliance numbers
 function updateApplianceNumbers() {
   const applianceInputs = document.querySelectorAll(".appliance-input")
@@ -76,15 +71,12 @@ function updateVehicleNumbers() {
   })
 }
 
-=======
->>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
 function setupDashboardFunctionality() {
   // Appliances
   const addApplianceBtn = document.getElementById("add-appliance")
   if (addApplianceBtn) {
     addApplianceBtn.addEventListener("click", () => {
       const applianceContainer = document.getElementById("appliance-container")
-<<<<<<< HEAD
       const applianceCount = applianceContainer.querySelectorAll(".appliance-input").length + 1
       const newAppliance = document.createElement("div")
       newAppliance.classList.add("appliance-input")
@@ -92,11 +84,6 @@ function setupDashboardFunctionality() {
         <div class="section-header">
           <span>Appliance <span class="item-number">${applianceCount}</span></span>
         </div>
-=======
-      const newAppliance = document.createElement("div")
-      newAppliance.classList.add("appliance-input")
-      newAppliance.innerHTML = `
->>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
         <label>
           Appliance (Voltage in Watts):
           <input type="number" class="voltage" placeholder="e.g. 60" required />
@@ -105,7 +92,6 @@ function setupDashboardFunctionality() {
           Time Used (in Hours):
           <input type="number" class="hours" placeholder="e.g. 5" required />
         </label>
-<<<<<<< HEAD
         <label>
           Quantity:
           <input type="number" class="quantity" placeholder="e.g. 1" value="1" min="1" required />
@@ -150,19 +136,11 @@ function setupDashboardFunctionality() {
     }
   })
 
-=======
-      `
-      applianceContainer.appendChild(newAppliance)
-    })
-  }
-
->>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
   // Vehicles
   const addVehicleBtn = document.getElementById("add-vehicle")
   if (addVehicleBtn) {
     addVehicleBtn.addEventListener("click", () => {
       const vehicleContainer = document.getElementById("vehicle-container")
-<<<<<<< HEAD
       const vehicleCount = vehicleContainer.querySelectorAll(".vehicle-input").length + 1
       const newVehicle = document.createElement("div")
       newVehicle.classList.add("vehicle-input")
@@ -170,11 +148,6 @@ function setupDashboardFunctionality() {
         <div class="section-header">
           <span>Vehicle <span class="item-number">${vehicleCount}</span></span>
         </div>
-=======
-      const newVehicle = document.createElement("div")
-      newVehicle.classList.add("vehicle-input")
-      newVehicle.innerHTML = `
->>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
         <label>
           Mode of Transport:
           <select class="vehicle-type" required>
@@ -188,7 +161,6 @@ function setupDashboardFunctionality() {
           Travel Duration (in Minutes):
           <input type="number" class="travel-time" placeholder="e.g. 30" required />
         </label>
-<<<<<<< HEAD
         <label>
           Number of Trips:
           <input type="number" class="trip-count" placeholder="e.g. 1" value="1" min="1" required />
@@ -233,13 +205,6 @@ function setupDashboardFunctionality() {
     }
   })
 
-=======
-      `
-      vehicleContainer.appendChild(newVehicle)
-    })
-  }
-
->>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
   // Calculate button
   const calcBtn = document.getElementById("calcBtn")
   if (calcBtn) {
@@ -255,7 +220,6 @@ function setupDashboardFunctionality() {
 
         console.log("Emission factors loaded:", { travelFactors, electricityFactor })
 
-<<<<<<< HEAD
         // Display the emission factors being used
         console.log("Using emission factors:", { travelFactors, electricityFactor })
 
@@ -285,14 +249,11 @@ function setupDashboardFunctionality() {
           }
         }
 
-=======
->>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
         let totalEmission = 0
 
         // Electricity Emissions
         const voltages = document.querySelectorAll(".voltage")
         const hours = document.querySelectorAll(".hours")
-<<<<<<< HEAD
         const quantities = document.querySelectorAll(".quantity")
 
         // Validate if inputs exist
@@ -384,35 +345,6 @@ function setupDashboardFunctionality() {
       } catch (error) {
         console.error("Calculation error:", error)
         resultBox.innerHTML = `<h3 class="error">Error: ${error.message || "Error calculating emissions. Please try again."}</h3>`
-=======
-        for (let i = 0; i < voltages.length; i++) {
-          const watt = Number.parseFloat(voltages[i].value)
-          const hour = Number.parseFloat(hours[i].value)
-          if (!isNaN(watt) && !isNaN(hour)) {
-            const kWh = (watt * hour) / 1000
-            totalEmission += kWh * electricityFactor
-          }
-        }
-
-        // Transport Emissions
-        const travelTimes = document.querySelectorAll(".travel-time")
-        const vehicleTypes = document.querySelectorAll(".vehicle-type")
-        for (let i = 0; i < travelTimes.length; i++) {
-          const minutes = Number.parseFloat(travelTimes[i].value)
-          const type = vehicleTypes[i].value
-          if (!isNaN(minutes)) {
-            // Use emission factor from database
-            const factor = travelFactors[type] || 0
-            totalEmission += minutes * factor
-          }
-        }
-
-        // Display result
-        resultBox.innerHTML = `<h3>Total Estimated CO₂ Emission: ${totalEmission.toFixed(2)} kg</h3>`
-      } catch (error) {
-        console.error("Calculation error:", error)
-        resultBox.innerHTML = `<h3 class="error">Error calculating emissions. Please try again.</h3>`
->>>>>>> 4b8d2ec7a50cfe0c0b599152f27c183c1687aa63
       }
     })
   }
